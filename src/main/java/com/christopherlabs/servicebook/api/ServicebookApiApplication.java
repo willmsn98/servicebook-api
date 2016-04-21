@@ -1,6 +1,6 @@
-package com.christopherlabs.service;
+package com.christopherlabs.servicebook.api;
 
-import com.christopherlabs.service.model.*;
+import com.christopherlabs.servicebook.api.model.*;
 import com.yahoo.elide.contrib.dropwizard.elide.ElideBundle;
 import com.yahoo.elide.resources.JsonApiEndpoint;
 import io.dropwizard.Application;
@@ -9,8 +9,7 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
 public class ServicebookApiApplication extends Application<ServicebookApiConfiguration> {
-
-    private final ElideBundle<ServicebookApiConfiguration> elideBundle;
+        private final ElideBundle<ServicebookApiConfiguration> elideBundle;
 
     public ServicebookApiApplication() {
         elideBundle = new ElideBundle<ServicebookApiConfiguration>(Event.class, User.class, Photo.class, Comment.class, Organization.class) {
@@ -32,4 +31,5 @@ public class ServicebookApiApplication extends Application<ServicebookApiConfigu
     public static void main(String[] args) throws Exception {
         new ServicebookApiApplication().run(args);
     }
+
  }

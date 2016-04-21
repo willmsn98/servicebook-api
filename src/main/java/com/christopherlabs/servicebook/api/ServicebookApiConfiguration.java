@@ -1,9 +1,8 @@
-package com.christopherlabs.service;
+package com.christopherlabs.servicebook.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
 import io.dropwizard.db.DataSourceFactory;
-import io.dropwizard.db.PooledDataSourceFactory;
 
 public class ServicebookApiConfiguration extends Configuration {
     private DataSourceFactory dataSourceFactory = new DataSourceFactory();

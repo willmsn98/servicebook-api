@@ -1,4 +1,4 @@
-package com.christopherlabs.service.model;
+package com.christopherlabs.servicebook.api.model;
 
 import com.yahoo.elide.annotation.Include;
 import com.yahoo.elide.annotation.SharePermission;

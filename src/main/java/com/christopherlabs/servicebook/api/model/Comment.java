@@ -1,16 +1,19 @@
-package com.christopherlabs.service.model;
+package com.christopherlabs.servicebook.api.model;
 
 import com.yahoo.elide.annotation.Include;
+import com.yahoo.elide.annotation.SharePermission;
+import com.yahoo.elide.security.checks.prefab.Role;
 
 import javax.persistence.*;
 
 @Entity
-@Include(rootLevel = true)
-public class Photo {
+@Include(rootLevel = false)
+@SharePermission(any = { Role.ALL.class })
+public class Comment {
 
     private long id;
-    private String image;
-    private User owner;
+    private String text;
+    private User user;
     private Event event;
     //private Timestamp timestamp;
 
@@ -24,21 +27,21 @@ public class Photo {
         this.id = id;
     }
 
-    public String getImage() {
-        return image;
+    public String getText() {
+        return text;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setText(String text) {
+        this.text = text;
     }
 
     @OneToOne
-    public User getOwner() {
-        return owner;
+    public User getUser() {
+        return user;
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @ManyToOne
