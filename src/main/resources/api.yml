@@ -1,0 +1,9 @@
+database:
+  driverClass: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/servicebook
+  user: servicebook
+  password: servicebook123
+
+  properties:
+    hibernate.current_session_context_class: thread
+    hibernate.hbm2ddl.auto: update
