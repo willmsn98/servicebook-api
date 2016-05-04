@@ -2,6 +2,8 @@ package com.christopherlabs.servicebook.api.model;
 
 import com.yahoo.elide.annotation.Include;
 
+import java.util.Date;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -15,10 +17,8 @@ public class Event {
     private String city;
     private String state;
     private String country;
-    //private Timestamp startTime;
-    private String startTime;
-    //private Timestamp endTime;
-    private String endTime;
+    private Date startTime;
+    private Date endTime;
     private User owner;
     private Collection<Comment> comments;
     private Collection<Photo> photos;
@@ -82,19 +82,23 @@ public class Event {
         this.country = country;
     }
 
-    public String getStartTime() {
+    @Column(name = "startTime", columnDefinition="DATETIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public String getEndTime() {
+    @Column(name = "endTime", columnDefinition="DATETIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
