@@ -17,8 +17,10 @@ public class Event {
     private String city;
     private String state;
     private String country;
-    private Date startTime;
-    private Date endTime;
+    //private Date startTime;
+    //private Date endTime;
+    private String startTime;
+    private String endTime;
     private User owner;
     private Collection<Comment> comments;
     private Collection<Photo> photos;
@@ -82,26 +84,43 @@ public class Event {
         this.country = country;
     }
 
-    @Column(name = "startTime", columnDefinition="DATETIME")
-    @Temporal(TemporalType.TIMESTAMP)
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    @Column(name = "endTime", columnDefinition="DATETIME")
-    @Temporal(TemporalType.TIMESTAMP)
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
+    /*
+        @Column(name = "startTime", columnDefinition="DATETIME")
+        @Temporal(TemporalType.TIMESTAMP)
+        public Date getStartTime() {
+            return startTime;
+        }
+
+        public void setStartTime(Date startTime) {
+            this.startTime = startTime;
+        }
+
+        @Column(name = "endTime", columnDefinition="DATETIME")
+        @Temporal(TemporalType.TIMESTAMP)
+        public Date getEndTime() {
+            return endTime;
+        }
+
+        public void setEndTime(Date endTime) {
+            this.endTime = endTime;
+        }
+        */
     @OneToOne
     public User getOwner() {
         return owner;
