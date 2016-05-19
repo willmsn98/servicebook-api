@@ -4,7 +4,6 @@ import com.christopherlabs.servicebook.api.model.*;
 import com.yahoo.elide.contrib.dropwizard.elide.ElideBundle;
 import com.yahoo.elide.resources.JsonApiEndpoint;
 import io.dropwizard.Application;
-import io.dropwizard.db.PooledDataSourceFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
@@ -12,11 +11,7 @@ public class ServicebookApiApplication extends Application<ServicebookApiConfigu
         private final ElideBundle<ServicebookApiConfiguration> elideBundle;
 
     public ServicebookApiApplication() {
-        elideBundle = new ElideBundle<ServicebookApiConfiguration>(Event.class, User.class, Photo.class, Comment.class, Organization.class) {
-            public PooledDataSourceFactory getDataSourceFactory(ServicebookApiConfiguration servicebookApiConfiguration) {
-                return servicebookApiConfiguration.getDataSourceFactory();
-            }
-        };
+        elideBundle = new ServiceBookElideBundle(Event.class, User.class, Photo.class, Comment.class, Organization.class);
     }
 
     @Override
