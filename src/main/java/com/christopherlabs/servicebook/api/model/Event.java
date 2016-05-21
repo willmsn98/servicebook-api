@@ -1,12 +1,18 @@
 package com.christopherlabs.servicebook.api.model;
 
 import com.yahoo.elide.annotation.Include;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Analyze;
+import org.hibernate.search.annotations.Store;
 
 import java.util.Date;
 
 import javax.persistence.*;
 import java.util.Collection;
 
+@Indexed
 @Entity
 @Include(rootLevel = true)
 public class Event {
@@ -33,6 +39,7 @@ public class Event {
         this.id = id;
     }
 
+    @Field(index = Index.YES, analyze = Analyze.YES, store = Store.YES)
     public String getName() {
         return name;
     }
@@ -58,6 +65,7 @@ public class Event {
         this.address = address;
     }
 
+    @Field(index = Index.YES, analyze = Analyze.YES, store = Store.YES)
     public String getCity() {
         return city;
     }

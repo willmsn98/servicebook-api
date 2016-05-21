@@ -1,10 +1,10 @@
 package com.christopherlabs.servicebook.api;
 
+import com.christopherlabs.servicebook.hibernatesearch.HibernateSearchStore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yahoo.elide.contrib.dropwizard.elide.ElideBundle;
 import com.yahoo.elide.core.DataStore;
 import com.yahoo.elide.core.EntityDictionary;
-import com.yahoo.elide.datastores.hibernate5.HibernateStore;
 import com.yahoo.elide.jsonapi.JsonApiMapper;
 import com.yahoo.elide.utils.coerce.CoerceUtil;
 import io.dropwizard.db.PooledDataSourceFactory;
@@ -44,9 +44,9 @@ public class ServiceBookElideBundle extends ElideBundle<ServicebookApiConfigurat
         if (ds == null) {
             final PooledDataSourceFactory dbConfig = getDataSourceFactory(configuration);
             SessionFactory sessionFactory = getSessionFactoryFactory().build(this, environment, dbConfig, getEntities(), name());
-            ds = new HibernateStore(sessionFactory);
+            ds = new HibernateSearchStore(sessionFactory);
+            ds.populateEntityDictionary(dictionary);
         }
-        ds.populateEntityDictionary(dictionary);
         return ds;
     }
 

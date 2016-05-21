@@ -7,6 +7,8 @@ database:
   properties:
     hibernate.current_session_context_class: thread
     hibernate.hbm2ddl.auto: create
+    hibernate.search.default.directory_provider: filesystem
+    hibernate.search.default.indexBase: /tmp/lucene/indexes
 
 server:
   type: simple
