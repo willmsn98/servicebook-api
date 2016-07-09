@@ -18,7 +18,7 @@ import java.util.Collection;
 public class Event {
     private long id;
     private String name;
-    private String description;
+    private String desc;
     private Organization organization;
     private String address;
     private String city;
@@ -49,12 +49,12 @@ public class Event {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     @ManyToOne
